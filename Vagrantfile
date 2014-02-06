@@ -62,6 +62,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "ci" do |ci|
     ci.vm.hostname = "cdzero2hero-ci"
     ci.vm.provision :shell, :inline => $script_ci
+    ci.vm.network "forwarded_port", guest: 22, host: 8022
     ci.vm.network "forwarded_port", guest: 8080, host: 8080
     ci.vm.network "forwarded_port", guest: 8081, host: 8081
     ci.vm.provider "virtualbox" do |vm|
