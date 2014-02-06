@@ -56,6 +56,12 @@ echo Done.
 SCRIPT
 
 Vagrant.configure("2") do |config|
+  # Supports local cache, don't wast bandwitdh
+  # vagrant plugin install vagrant-cachier
+  # https://github.com/fgrehm/vagrant-cachier 
+  if Vagrant.has_plugin?("vagrant-cachier")
+    config.cache.auto_detect = true
+  end
   config.vm.box = "saucy-server-cloudimg-amd64"
   config.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/saucy/current/saucy-server-cloudimg-amd64-vagrant-disk1.box"
 
